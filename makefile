@@ -1,2 +1,2 @@
 all:
-	gcc hello.cpp -o vice
+	gcc main.cpp init.cpp -o vice

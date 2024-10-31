@@ -82,6 +82,15 @@ enum
 
 typedef struct
 {
+    int move;
+    int castlePerm;
+    int enPas;
+    int fiftyMove;
+    U64 PosKey;
+} S_UNDO;
+
+typedef struct
+{
     int pieces[BRD_SQ_NUM];
     U64 pawns[3];
     int KingSq[2];
@@ -96,7 +105,14 @@ typedef struct
     int bigPce[3];
     int majPce[3];
     int minPce[3];
-
+    S_UNDO history[MAX_MOVES_GAME];
 } S_BOARD;
+
+// MACROS
+#define FR2SQ(f, r) ((21 + (f)) + ((r) * 10))
+
+// GLOBALS
+extern int Sq120ToSq64[BRD_SQ_NUM];
+extern int Sq64To120[64];
 
 #endif
