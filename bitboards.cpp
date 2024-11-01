@@ -14,9 +14,9 @@ void PrintBitBoard(U64 bb)
     {
         for (file = FILE_A; file <= FILE_H; ++file)
         {
-            sq = FR2SQ(file, rank);
+            sq = FR2SQ(file, rank); // 120 based index
             sq64 = SQ64(sq);
-            if ((shiftMe << sq64) && bb)
+            if ((shiftMe << sq64) & bb)
                 std::cout << "X";
             else
                 std::cout << "-";
