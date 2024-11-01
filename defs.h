@@ -1,5 +1,23 @@
 #ifndef DEFS_H
 #define DEFS_H
+#include <iostream>
+#include <stdlib.h>
+
+#define DEBUG // Enables the debug mode
+
+#ifndef DEBUG
+#define ASSERT(n) // Empty macro if DEBUG is not defined
+#else
+#define ASSERT(n)                                             \
+    if (!(n))                                                 \
+    {                                                         \
+        std::cout << "Assertion failed: " << #n << std::endl; \
+        std::cout << "Date: " << __DATE__ << std::endl;       \
+        std::cout<<"FILE"<<__FILE__;
+        std::cout<<"AT LINE"<<__LINE__;
+        exit(1);                                              \
+    }
+#endif
 typedef unsigned long long U64;
 #define NAME "VICE 1.0"
 #define BRD_SQ_NUM 120
@@ -34,14 +52,14 @@ enum
 
 enum
 {
-    RANK_1,
-    RANK_2,
-    RANK_3,
-    RANK_4,
-    RANK_5,
-    RANK_6,
-    RANK_7,
-    RANK_8,
+    RANK_1, // 0
+    RANK_2, // 1
+    RANK_3, // 2
+    RANK_4, // 3
+    RANK_5, // 4
+    RANK_6, // 5
+    RANK_7, // 6
+    RANK_8, // 7
     RANK_NONE
 };
 
@@ -98,6 +116,7 @@ typedef struct
     int castlePerm;
     int enPass;
     int fiftyMove;
+
     int ply;
     int hisPlay;
     U64 posKey;
@@ -106,6 +125,8 @@ typedef struct
     int majPce[3];
     int minPce[3];
     S_UNDO history[MAX_MOVES_GAME];
+    // piece list
+    int pList[13][10];
 } S_BOARD;
 
 // MACROS
@@ -115,4 +136,6 @@ typedef struct
 extern int Sq120ToSq64[BRD_SQ_NUM];
 extern int Sq64To120[64];
 
+// FUNCTIONS
+extern void AllInit();
 #endif

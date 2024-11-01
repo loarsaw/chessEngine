@@ -1,9 +1,12 @@
+#include <iostream>
 #include <stdio.h>
 #include "defs.h"
-int Sq120ToSq64[BRD_SQ_NUM];
-int Sq64To120[64];
+using namespace std;
 int main()
 {
-    // cout << "HELLO";
+    AllInit();
+    int num = 3;
+    int ryan = 45;
+    ASSERT(num == ryan);
     return 0;
 }
