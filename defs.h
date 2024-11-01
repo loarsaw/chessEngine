@@ -2,7 +2,6 @@
 #define DEFS_H
 #include <iostream>
 #include <stdlib.h>
-
 #define DEBUG // Enables the debug mode
 
 #ifndef DEBUG
@@ -13,11 +12,12 @@
     {                                                         \
         std::cout << "Assertion failed: " << #n << std::endl; \
         std::cout << "Date: " << __DATE__ << std::endl;       \
-        std::cout<<"FILE"<<__FILE__;
-        std::cout<<"AT LINE"<<__LINE__;
+        std::cout << "File: " << __FILE__ << std::endl;       \
+        std::cout << "Line: " << __LINE__ << std::endl;       \
         exit(1);                                              \
     }
 #endif
+
 typedef unsigned long long U64;
 #define NAME "VICE 1.0"
 #define BRD_SQ_NUM 120
